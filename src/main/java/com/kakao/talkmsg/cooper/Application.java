@@ -14,18 +14,7 @@ public class Application {
             Integer height = Integer.valueOf(bufferedReader.readLine());
 
             Ladder ladder = new Ladder(numOfPeople, height);
-            printLadder(ladder);
+            Output.printLadder(ladder);
         }
-    }
-
-    private static void printLadder(Ladder ladder) {
-        ladder.getPoints().stream()
-                .forEach(line -> {
-                    line.getEdges().stream().map(edge -> edge ? "-" : " ").forEach(edge -> {
-                        System.out.print("|");
-                        System.out.print(edge);
-                    });
-                    System.out.println("|");
-                });
     }
 }

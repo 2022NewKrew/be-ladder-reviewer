@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Line {
-    public static final int MIN_PEOPLE = 2;
+    private static final int MIN_PEOPLE = 2;
     private static Random random = new Random();
     private final List<Boolean> edges;
 
@@ -16,6 +16,13 @@ public class Line {
             throw new IllegalArgumentException();
         }
         this.edges = generateEdges(numOfPeople);
+    }
+
+     public Line(List<Boolean> edges) {
+        if (edges.size() < MIN_PEOPLE && !isProperEdges(edges)) {
+            throw new IllegalArgumentException();
+        }
+        this.edges = edges;
     }
 
     public List<Boolean> getEdges() {
