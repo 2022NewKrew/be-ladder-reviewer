@@ -1,5 +1,7 @@
 package com.louis.ladder.game;
 
+import com.louis.ladder.game.util.LadderUtils;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -12,8 +14,8 @@ public class LadderLine {
         this.ladderPartsList = ladderPartsList;
     }
 
-    public static LadderLine createLadderParts(int ladderWidth) {
-        List<LadderParts> partsList = IntStream.range(0, ladderWidth * 2 - 1)
+    public static LadderLine createLadderParts(int totalPeople) {
+        List<LadderParts> partsList = IntStream.range(0, LadderUtils.calculateLadderWidth(totalPeople))
                 .mapToObj(LadderParts::of)
                 .collect(Collectors.toList());
 
