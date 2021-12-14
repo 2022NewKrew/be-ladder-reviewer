@@ -20,8 +20,8 @@ public class Application {
 
     private static void printLadder(Ladder ladder) {
         ladder.getPoints().stream()
-                .forEach(row -> {
-                    row.stream().map(edge -> edge ? "-" : " ").forEach(edge -> {
+                .forEach(line -> {
+                    line.getEdges().stream().map(edge -> edge ? "-" : " ").forEach(edge -> {
                         System.out.print("|");
                         System.out.print(edge);
                     });
