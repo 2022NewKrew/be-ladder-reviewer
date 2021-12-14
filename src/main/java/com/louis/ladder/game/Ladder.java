@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class Ladder {
 
-    private List<LadderLine> ladderLineList;
+    private final List<LadderLine> ladderLineList;
 
     private Ladder(List<LadderLine> ladderLineList) {
         this.ladderLineList = ladderLineList;
@@ -18,5 +18,12 @@ public class Ladder {
                 .collect(Collectors.toList());
 
         return new Ladder(lineList);
+    }
+
+    @Override
+    public String toString() {
+        return ladderLineList.stream()
+                .map(LadderLine::toString)
+                .collect(Collectors.joining("\n"));
     }
 }
