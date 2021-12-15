@@ -19,13 +19,17 @@
 
 - LadderApplication : 사다리 게임 수행
 - adapter
-    - in.console
-        - LadderInputConsole
-            - 참여할 사람 숫자 입력
-            - 최대 사다리 높이 입력
-    - web
-        - LadderController : 사다리 애플리케이션 컨트롤러
-            - 사다리 생성
+    - in
+        - console
+            - LadderInputConsole
+                - 참여할 사람 숫자 입력
+                - 최대 사다리 높이 입력
+        - web
+            - LadderController : 사다리 애플리케이션 컨트롤러
+                - 사다리 생성
+    - out
+        - LadderConsoleAdapter : 사다리 ouput 어뎁터
+        - LadderOutputConsole : 사다리 결과 출력
 - application
     - port
         - in
