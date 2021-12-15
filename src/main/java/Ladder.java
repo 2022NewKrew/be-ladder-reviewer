@@ -41,7 +41,7 @@ public class Ladder {
         }
     }
 
-    public void initHorizontalLine() {
+    private void initHorizontalLine() {
         for (int i = 0; i < (width - numberOfPeople); i++) {
             for (int j = 0; j < height; j++) {
                 if (rand.nextBoolean())
@@ -59,18 +59,18 @@ public class Ladder {
         }
     }
 
-    public void validateInput(int numberOfPeople, int height) {
+    private void validateInput(int numberOfPeople, int height) {
         validateNumberOfPeople(numberOfPeople);
         validateHeight(height);
     }
 
-    public void validateNumberOfPeople(Integer numberOfPeople) {
+    private void validateNumberOfPeople(Integer numberOfPeople) {
         if (numberOfPeople == null || numberOfPeople < 2)
             throw new InvalidNumberOfPeopleException(() ->
                     String.format("참여할 사람 수가 올바르지 않습니다. 입력된 사람 수: %d", numberOfPeople));
     }
 
-    public void validateHeight(Integer height) {
+    private void validateHeight(Integer height) {
         if (height == null || height < 1)
             throw new InvalidHeightOfLadderException(() ->
                     String.format("사다리 높이가 올바르지 않습니다. 입력된 사다리 높이: %d", height));
