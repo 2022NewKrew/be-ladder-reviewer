@@ -3,6 +3,7 @@ package ladder.domain;
 import ladder.strategy.MovingStrategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -25,6 +26,6 @@ public class Floor {
     }
 
     public List<Boolean> getLines() {
-        return this.lines;
+        return Collections.unmodifiableList(this.lines);
     }
 }

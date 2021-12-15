@@ -2,6 +2,7 @@ package ladder.domain;
 
 import ladder.strategy.MovingStrategy;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -16,7 +17,6 @@ public class Ladder {
     }
 
     public List<Floor> getFloors() {
-        return this.floors;
+        return Collections.unmodifiableList(this.floors);
     }
-
 }
