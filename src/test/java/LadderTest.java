@@ -7,55 +7,32 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LadderTest {
     @Test
-    public void testNumberOfPeopleNull() {
-        var input = new Ladder();
-        Integer people = null;
-
-        assertThatThrownBy(() -> input.validateNumberOfPeople(people))
-                .isInstanceOf(InvalidNumberOfPeopleException.class);
-    }
-
-    @Test
     public void testNumberOfPeopleZero() {
-        var input = new Ladder();
-        Integer people = 0;
-
-        assertThatThrownBy(() -> input.validateNumberOfPeople(people))
+        int people = 0;
+        assertThatThrownBy(() -> new Ladder(people, 10))
                 .isInstanceOf(InvalidNumberOfPeopleException.class);
     }
 
     @Test
     public void testNumberOfPeopleRandom() {
-        var input = new Ladder();
-        Integer people = 2;
-        assertThatCode(() -> input.validateNumberOfPeople(people))
+        int people = 2;
+        assertThatCode(() -> new Ladder(people, 10))
                 .doesNotThrowAnyException();
     }
 
     @Test
-    public void testHeightNull() {
-        var input = new Ladder();
-        Integer height = null;
-
-        assertThatThrownBy(() -> input.validateHeight(height))
-                .isInstanceOf(InvalidHeightOfLadderException.class);
-    }
-
-    @Test
     public void testHeightZero() {
-        var input = new Ladder();
-        Integer height = 0;
+        int height = 0;
 
-        assertThatThrownBy(() -> input.validateHeight(height))
+        assertThatThrownBy(() -> new Ladder(10, height))
                 .isInstanceOf(InvalidHeightOfLadderException.class);
     }
 
     @Test
     public void testHeightRandom() {
-        var input = new Ladder();
-        Integer height = 2;
+        int height = 2;
 
-        assertThatCode(() -> input.validateHeight(height))
+        assertThatCode(() -> new Ladder(10, height))
                 .doesNotThrowAnyException();
     }
 }
