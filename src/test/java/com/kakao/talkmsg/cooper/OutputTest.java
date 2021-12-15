@@ -19,4 +19,28 @@ class OutputTest {
         //then
         assertThat(lineString).isEqualTo("|-| | |-| |");
     }
+
+    @Test
+    public void getLineString2() {
+        //given
+        Line line = new Line(Arrays.asList(true, false));
+
+        //when
+        String lineString = Output.getLineString(line);
+
+        //then
+        assertThat(lineString).isEqualTo("|-| |");
+    }
+
+    @Test
+    public void getLineString3() {
+        //given
+        Line line = new Line(Arrays.asList(false, true));
+
+        //when
+        String lineString = Output.getLineString(line);
+
+        //then
+        assertThat(lineString).isEqualTo("| |-|");
+    }
 }

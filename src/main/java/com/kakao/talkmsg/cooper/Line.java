@@ -18,7 +18,7 @@ public class Line {
         this.edges = generateEdges(numOfPeople);
     }
 
-     public Line(List<Boolean> edges) {
+    public Line(List<Boolean> edges) {
         if (edges.size() < MIN_PEOPLE && !isProperEdges(edges)) {
             throw new IllegalArgumentException();
         }
@@ -43,13 +43,17 @@ public class Line {
 
     public boolean isProperEdges(List<Boolean> edges) {
         boolean previousEdge = false;
+        boolean result = false;
         for (Boolean currentEdge : edges) {
             if (previousEdge && currentEdge) {
                 return false;
             }
+            if (currentEdge) {
+                result = true;
+            }
             previousEdge = currentEdge;
         }
-        return previousEdge;
+        return result;
     }
 
     public List<Boolean> generateRandomEdges(int numOfPeople) {
