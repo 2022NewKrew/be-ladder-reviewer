@@ -38,7 +38,7 @@ public class LadderGame {
         }
     }
 
-    public void printLine(String[][] ladderFrame, int heightIndex, int randomNumber) {
+    private void printLine(String[][] ladderFrame, int heightIndex, int randomNumber) {
         for (int participantIndex = 0; participantIndex < ladderFrame[heightIndex].length; participantIndex++) {
             System.out.print(ladderFrame[heightIndex][participantIndex]);
             printBar(ladderFrame[heightIndex], participantIndex, randomNumber);
