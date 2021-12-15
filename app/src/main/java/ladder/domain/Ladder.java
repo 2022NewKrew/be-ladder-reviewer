@@ -16,7 +16,7 @@ public class Ladder {
     public Ladder(int height, int width) {
         this.height = height;
         this.width = width;
-        this.lines = makeLines(height, width-1);
+        this.lines = makeLines(height, width);
     }
 
     private List<List<Boolean>> makeLines(int height, int width) {
