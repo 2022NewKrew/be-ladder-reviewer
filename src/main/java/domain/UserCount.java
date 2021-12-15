@@ -9,6 +9,10 @@ public class UserCount {
         this.userCount = userCount;
     }
 
+    public int getUserCount() {
+        return userCount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
