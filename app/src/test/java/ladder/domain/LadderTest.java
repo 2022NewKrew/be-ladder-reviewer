@@ -25,4 +25,10 @@ public class LadderTest {
         assertThat(ladder3.getWidth()).isEqualTo(4);
     }
 
+    @Test
+    void uiViewTest() {
+        Ladder ladder1 = new Ladder(7, 5);
+        System.out.println(ladder1);
+    }
+
 }
