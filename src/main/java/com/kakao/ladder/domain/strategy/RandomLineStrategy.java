@@ -12,10 +12,10 @@ public class RandomLineStrategy implements LineStrategy {
     private static final Integer PREVIOUS_POINT_INDEX = -1;
 
     @Override
-    public List<Boolean> createPoints(int countOfPerson) {
-        List<Boolean> points = new ArrayList<>(Collections.nCopies(countOfPerson, false));
+    public List<Boolean> createPoints(int numberOfParticipant) {
+        List<Boolean> points = new ArrayList<>(Collections.nCopies(numberOfParticipant, false));
 
-        IntStream.range(START_POINT_INDEX, countOfPerson)
+        IntStream.range(START_POINT_INDEX, numberOfParticipant)
                 .forEach(index -> {
                     boolean previousPoint = points.get(index + PREVIOUS_POINT_INDEX);
                     points.set(index, nextPoint(previousPoint));
