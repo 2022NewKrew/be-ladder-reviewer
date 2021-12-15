@@ -4,6 +4,7 @@ import exception.InvalidHeightOfLadderException;
 import exception.InvalidNumberOfPeopleException;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class Ladder {
     private final Random rand = new Random();
@@ -28,37 +29,39 @@ public class Ladder {
     }
 
     private void initBlank() {
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                ladder[i][j] = Cell.BLANK;
-            }
-        }
+        IntStream.range(0, width)
+                .forEach(x -> fillYAxis(x, Cell.BLANK));
     }
 
     private void initVerticalLine() {
-        for (int i = 0; i < numberOfPeople; i++) {
-            for (int j = 0; j < height; j++) {
-                ladder[i * 2][j] = Cell.VERTICAL;
-            }
-        }
+        IntStream.range(0, numberOfPeople)
+                .forEach(x -> fillYAxis(x * 2, Cell.VERTICAL));
+    }
+
+    private void fillYAxis(int x, Cell cell) {
+        IntStream.range(0, height)
+                .forEach(y -> ladder[x][y] = cell);
     }
 
     private void initHorizontalLine() {
-        for (int i = 0; i < (width - numberOfPeople); i++) {
-            for (int j = 0; j < height; j++) {
-                if (rand.nextBoolean())
-                    ladder[i * 2 + 1][j] = Cell.HORIZONTAL;
-            }
+        for (int x = 0; x < (width - numberOfPeople); x++) {
+            fillYAxisWithHorizontalLine(x * 2 + 1);
         }
     }
 
+    private void fillYAxisWithHorizontalLine(int x) {
+        IntStream.range(0, height)
+                .filter(value -> rand.nextBoolean())
+                .forEach(y -> ladder[x][y] = Cell.HORIZONTAL);
+    }
+
     public void print() {
-        for (int j = 0; j < height; j++) {
-            for (int i = 0; i < width; i++) {
-                System.out.print(ladder[i][j].toString());
-            }
-            System.out.println();
-        }
+        IntStream.range(0, height)
+                .forEach(y -> {
+                    IntStream.range(0, width)
+                            .forEach(x -> System.out.print(ladder[x][y].toString()));
+                    System.out.println();
+                });
     }
 
     private void validateInput(int numberOfPeople, int height) {
