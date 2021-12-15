@@ -1,7 +1,6 @@
 package com.kakao.talkmsg.cooper;
 
 import org.apache.commons.collections4.ListUtils;
-import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -20,14 +19,14 @@ class LineTest {
         assertThat(line.getEdgeSize()).isEqualTo(9);
     }
 
-    @DisplayName("라인 생성할 때 2보다 작은 사람으로 생성하는 경우 에러 발생")
+    @DisplayName("라인 생성할 때 2보다 작은 참가자수로 생성하는 경우 에러 발생")
     @Test
     void line_oneperson() {
         assertThat(new Line(2)).isNotNull();
         assertThatThrownBy(() -> new Line(1)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName(" edge가 원하는 수만큼의 random하게 list로 생성되는지 확인한다")
+    @DisplayName("edge가 원하는 수만큼 random하게 list로 생성되는지 확인한다")
     @Test
     void generateRandomEdges() {
         //given
@@ -51,18 +50,50 @@ class LineTest {
     @RepeatedTest(100)
     void generateRandomEdges_many() {
         //given
-        Line line = new Line(5);
+        Line line = new Line(20);
 
         //when
-        List<Boolean> edges = line.generateRandomEdges(1000);
+        List<Boolean> edges = line.generateRandomEdges(20);
 
         //then
         assertThat(edges).contains(true).contains(false);
     }
 
-    @DisplayName("인접한 edge가 존재하는 않는 list인지 검사")
+    @DisplayName("참가자 3명인 경우에 유효한 list인지 검사")
     @Test
-    void isProperEdges() {
+    void isProperEdges_3people() {
+        //given
+        Line line = new Line(3);
+
+        //when
+        boolean actual1 = line.isProperEdges(Arrays.asList(false, false));
+
+        //then
+        assertThat(actual1).isFalse();
+
+        //when
+        boolean actual2 = line.isProperEdges(Arrays.asList(true, false));
+
+        //then
+        assertThat(actual2).isTrue();
+
+
+        //when
+        boolean actual3 = line.isProperEdges(Arrays.asList(false, true));
+
+        //then
+        assertThat(actual3).isTrue();
+
+        //when
+        boolean actual4 = line.isProperEdges(Arrays.asList(true, true));
+
+        //then
+        assertThat(actual4).isFalse();
+    }
+
+    @DisplayName("참가자 4명인 경우 인접한 edge가 존재하는 list인지 검사")
+    @Test
+    void isProperEdges_4people() {
         //given
         Line line = new Line(4);
 
@@ -70,54 +101,52 @@ class LineTest {
         boolean actual1 = line.isProperEdges(Arrays.asList(false, false, false));
 
         //then
-        AssertionsForClassTypes.assertThat(actual1).isFalse();
+        assertThat(actual1).isFalse();
 
         //when
         boolean actual2 = line.isProperEdges(Arrays.asList(true, false, true));
 
         //then
-        AssertionsForClassTypes.assertThat(actual2).isTrue();
+        assertThat(actual2).isTrue();
 
         //when
         boolean actual3 = line.isProperEdges(Arrays.asList(false, false, true));
 
         //then
-        AssertionsForClassTypes.assertThat(actual3).isTrue();
-    }
-
-    @DisplayName("인접한 edge가 존재하는 list인지 검사")
-    @Test
-    void isNotProperEdges() {
-        //given
-        Line line = new Line(4);
+        assertThat(actual3).isTrue();
 
         //when
-        boolean actual1 = line.isProperEdges(Arrays.asList(true, true, true));
+        boolean actual4 = line.isProperEdges(Arrays.asList(true, true, true));
 
         //then
-        AssertionsForClassTypes.assertThat(actual1).isFalse();
+        assertThat(actual4).isFalse();
 
         //when
-        boolean actual2 = line.isProperEdges(Arrays.asList(true, true, false));
+        boolean actual5 = line.isProperEdges(Arrays.asList(true, true, false));
 
         //then
-        AssertionsForClassTypes.assertThat(actual2).isFalse();
+        assertThat(actual5).isFalse();
     }
 
     @DisplayName("인접하는 edge가 존재하는 않는 list를 생성")
     @RepeatedTest(100)
     void generateEdges() {
         //given
-        Line line = new Line(4);
+        Line line = new Line(5);
 
         //when
-        List<Boolean> edges = line.generateEdges(4);
+        List<Boolean> edges = line.generateEdges(5);
 
         //then
-        assertThat(edges).hasSize(3);
-        AssertionsForClassTypes.assertThat(ListUtils.isEqualList(edges, Arrays.asList(true, true, false))).isFalse();
-        AssertionsForClassTypes.assertThat(ListUtils.isEqualList(edges, Arrays.asList(true, true, false))).isFalse();
-        AssertionsForClassTypes.assertThat(ListUtils.isEqualList(edges, Arrays.asList(true, true, false))).isFalse();
-        AssertionsForClassTypes.assertThat(ListUtils.isEqualList(edges, Arrays.asList(true, true, false))).isFalse();
+        assertThat(edges).hasSize(4);
+        assertThat(ListUtils.isEqualList(edges, Arrays.asList(false, false, false, false))).isFalse();
+        assertThat(ListUtils.isEqualList(edges, Arrays.asList(false, false, true, true))).isFalse();
+        assertThat(ListUtils.isEqualList(edges, Arrays.asList(false, true, true, false))).isFalse();
+        assertThat(ListUtils.isEqualList(edges, Arrays.asList(false, true, true, true))).isFalse();
+        assertThat(ListUtils.isEqualList(edges, Arrays.asList(true, false, true, true))).isFalse();
+        assertThat(ListUtils.isEqualList(edges, Arrays.asList(true, true, false, false))).isFalse();
+        assertThat(ListUtils.isEqualList(edges, Arrays.asList(true, true, false, true))).isFalse();
+        assertThat(ListUtils.isEqualList(edges, Arrays.asList(true, true, true, false))).isFalse();
+        assertThat(ListUtils.isEqualList(edges, Arrays.asList(true, true, true, true))).isFalse();
     }
 }
