@@ -16,7 +16,6 @@ public enum LadderParts {
         return BLINK;
     }
 
-
     @Override
     public String toString() {
         return this.parts;

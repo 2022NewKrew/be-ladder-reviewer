@@ -19,6 +19,8 @@ public class LadderLine {
                 .mapToObj(LadderParts::of)
                 .collect(Collectors.toList());
 
+        partsList.set(LadderUtils.getRandomHorizonIndex(totalPeople), LadderParts.MOVE_PARTS);
+
         return new LadderLine(partsList);
     }
 
