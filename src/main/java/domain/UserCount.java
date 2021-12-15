@@ -5,10 +5,6 @@ import java.util.Objects;
 public class UserCount {
     private final int userCount;
 
-    public UserCount(String userCount) {
-        this(Integer.parseInt(userCount));
-    }
-
     public UserCount(int userCount) {
         this.userCount = userCount;
     }

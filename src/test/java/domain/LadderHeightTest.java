@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserCountTest {
+public class LadderHeightTest {
     @Test
-    @DisplayName("UserCount 생성자 테스트")
+    @DisplayName("LadderHeight 생성자 테스트")
     void constructor() {
-        assertThat(new UserCount(1)).isEqualTo(new UserCount(1));
+        assertThat(new LadderHeight(1)).isEqualTo(new LadderHeight(1));
     }
 }
