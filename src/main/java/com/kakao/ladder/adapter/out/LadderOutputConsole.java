@@ -16,10 +16,10 @@ public class LadderOutputConsole {
     }
 
     private void printLadder(StringBuilder sb, Ladder ladder) {
-        for (Line line : ladder.getLines()) {
+        ladder.getLines().forEach(line -> {
             sb.append(ENTER);
             printLine(sb, line);
-        }
+        });
     }
 
     private void printLine(StringBuilder sb, Line line) {
