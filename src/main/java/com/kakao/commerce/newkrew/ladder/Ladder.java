@@ -32,16 +32,16 @@ public class Ladder {
             throw new IllegalArgumentException("잘못된 입력");
         }
 
+        depth++;
         final Floor<LadderFloor> b = bottom;
         final Floor<LadderFloor> newFloor = new Floor<>(b, ladderFloor, null);
         bottom = newFloor;
         if (b == null) {
             top = newFloor;
-        } else {
-            b.downFloor(newFloor);
+            return;
         }
 
-        depth++;
+        b.downFloor(newFloor);
     }
 
     public int getDepth() {
