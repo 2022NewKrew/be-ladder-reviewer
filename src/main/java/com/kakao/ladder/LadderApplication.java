@@ -10,9 +10,9 @@ import com.kakao.ladder.domain.factory.LineFactory;
 public class LadderApplication {
     public static void main(String[] args) {
         LadderInputConsole ladderInputConsole = new LadderInputConsole();
-        LadderController ladderController
-                = new LadderController(new LadderService(new LineFactory(),
-                                                         new LadderConsoleAdapter(new LadderOutputConsole())));
+        LadderController ladderController = new LadderController(new LadderService(new LineFactory(),
+                                                                                   new LadderConsoleAdapter(
+                                                                                           new LadderOutputConsole())));
 
         int numberOfParticipant = ladderInputConsole.inputNumberOfParticipant();
         int heightOfLadder = ladderInputConsole.inputHeightOfLadder();
