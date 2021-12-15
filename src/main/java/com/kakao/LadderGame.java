@@ -1,5 +1,6 @@
 package com.kakao;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,17 +20,26 @@ public class LadderGame {
         this.maxLadderHeight = Integer.parseInt(inputMaxLadderHeight);
     }
 
-    public void print() {
+    public String[][] createLadderFrame() {
         var ladder = new String[maxLadderHeight][participantCount];
-
         for (int heightIndex = 0; heightIndex < ladder.length; heightIndex++) {
-            // Random.nextInt는 0부터 시작, -2를 하여 사다리가 들어갈 위치를 랜덤으로 구한다
-            var randomNumber = new Random().nextInt(participantCount - 2);
-            // 사람 수 만큼 선을 배치한다
-            for (int participantIndex = 0; participantIndex < ladder[heightIndex].length; participantIndex++) {
-                System.out.print("|");
-                // 랜덤 번호에 해당할 경우 사다리를 놓는다(사다리를 넣을 사이 공간)
-                if (participantIndex == randomNumber + 1) {
+            Arrays.fill(ladder[heightIndex], "|");
+        }
+        return ladder;
+    }
+
+    public void print() {
+        var ladderFrame = createLadderFrame();
+        var random = new Random();
+        for (int heightIndex = 0; heightIndex < ladderFrame.length; heightIndex++) {
+            // Random.nextInt는 0부터 시작(가장 높은 수가 나오면 사다리 생략)
+            var randomNumber = random.nextInt(participantCount);
+            // 사다리 놓기
+            for (int participantIndex = 0; participantIndex < ladderFrame[participantIndex].length; participantIndex++) {
+                System.out.print(ladderFrame[heightIndex][participantIndex]);
+
+                // 랜덤 번호에 해당할 경우 사다리를 놓는다(사다리를 넣을 사이 공간), 마지막 자리엔 사다리를 놓지 않는다
+                if (participantIndex == randomNumber && participantIndex + 1 != ladderFrame[participantIndex].length) {
                     System.out.print("-");
                 } else {
                     System.out.print(" ");
@@ -41,6 +51,7 @@ public class LadderGame {
 
     public void start() {
         readInput();
+        createLadderFrame();
         print();
     }
 
