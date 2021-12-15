@@ -1,3 +1,5 @@
+package ladder;
+
 import exception.InvalidHeightOfLadderException;
 import exception.InvalidNumberOfPeopleException;
 

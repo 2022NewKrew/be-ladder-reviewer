@@ -1,3 +1,5 @@
+package ladder;
+
 public enum Cell {
     BLANK(" "), VERTICAL("|"), HORIZONTAL("-");
 
