@@ -14,7 +14,7 @@ public class LadderLine {
         this.ladderPartsList = ladderPartsList;
     }
 
-    public static LadderLine createLadderParts(int totalPeople) {
+    public static LadderLine createLadderLine(int totalPeople) {
         List<LadderParts> partsList = IntStream.range(0, LadderUtils.calculateLadderWidth(totalPeople))
                 .mapToObj(LadderParts::of)
                 .collect(Collectors.toList());
