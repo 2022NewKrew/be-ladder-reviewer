@@ -53,9 +53,9 @@ public class Ladder {
     }
 
     public void print() {
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                System.out.print(ladder[j][i].toString());
+        for (int j = 0; j < height; j++) {
+            for (int i = 0; i < width; i++) {
+                System.out.print(ladder[i][j].toString());
             }
             System.out.println();
         }
