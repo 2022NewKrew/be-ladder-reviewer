@@ -3,12 +3,14 @@
  */
 package ladder;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import ladder.domain.Ladder;
+import ladder.view.LadderGameUI;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        int width = LadderGameUI.inputPeopleSize();
+        int height = LadderGameUI.inputLadderHigh();
+        Ladder ladder = new Ladder(height, width);
+        LadderGameUI.outputLadder(ladder.toString());
     }
 }
