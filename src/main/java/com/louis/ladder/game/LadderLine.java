@@ -19,7 +19,11 @@ public class LadderLine {
                 .mapToObj(LadderParts::of)
                 .collect(Collectors.toList());
 
-        partsList.set(LadderUtils.getRandomHorizonIndex(totalPeople), LadderParts.MOVE_PARTS);
+        LadderUtils.getHorizonIndexList(totalPeople)
+                .forEach(it -> {
+                    if (it != 1 && partsList.get(it - 2) == LadderParts.MOVE_PARTS) return;
+                    partsList.set(it, LadderParts.randomParts());
+                });
 
         return new LadderLine(partsList);
     }
