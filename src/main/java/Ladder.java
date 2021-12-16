@@ -14,6 +14,6 @@ public class Ladder {
 	}
 
 	public void print() {
-		stepLines.forEach(stepRow -> stepRow.print());
+		stepLines.forEach(stepLine -> stepLine.print());
 	}
 }
