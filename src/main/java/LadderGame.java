@@ -26,32 +26,33 @@ public class LadderGame {
     }
 
     private void printLadders() {
+        printNewLine();
         for (int i = 0; i < this.heightOfLadder; i++) {
             printFloors();
         }
+        printNewLine();
     }
 
     private void printFloors() {
+        printMessage(VERTICAL_STICK);
         String previousStick = null;
-        for (int i = 0; i < this.participants; i++) {
+        for (int i = 0; i < this.participants - 1; i++) {
+            previousStick = getNextStick(previousStick);
+            printMessage(previousStick);
             printMessage(VERTICAL_STICK);
-            if (isLastStick(i)) {
-                break;
-            }
-            if (HORIZONTAL_STICK.equals(previousStick) || new Random().nextInt() % 2 == 0) {
-                printMessage(EMPTY_STICK);
-                previousStick = EMPTY_STICK;
-
-            } else {
-                printMessage(HORIZONTAL_STICK);
-                previousStick = HORIZONTAL_STICK;
-            }
         }
-        printMessage("\n");
+        printNewLine();
     }
 
-    private boolean isLastStick(int i) {
-        return i == this.participants - 1;
+    private String getNextStick(String previousStick) {
+        if (HORIZONTAL_STICK.equals(previousStick) || new Random().nextInt() % 2 == 0) {
+            return EMPTY_STICK;
+        }
+        return HORIZONTAL_STICK;
+    }
+
+    private void printNewLine() {
+        printMessage("\n");
     }
 
     private void printMessage(String message) {
