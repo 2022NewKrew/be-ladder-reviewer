@@ -1,4 +1,4 @@
-package com.kakao.reviewer;
+package com.kakao.reviewer.view;
 
 import java.util.Scanner;
 

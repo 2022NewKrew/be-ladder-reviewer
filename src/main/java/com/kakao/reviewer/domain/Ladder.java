@@ -1,4 +1,4 @@
-package com.kakao.reviewer;
+package com.kakao.reviewer.domain;
 
 public class Ladder {
     private int[][] bridges;

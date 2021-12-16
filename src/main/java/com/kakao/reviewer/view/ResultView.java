@@ -1,4 +1,6 @@
-package com.kakao.reviewer;
+package com.kakao.reviewer.view;
+
+import com.kakao.reviewer.domain.Ladder;
 
 public class ResultView {
     private static final String BRIDGE_MARK = "-";
