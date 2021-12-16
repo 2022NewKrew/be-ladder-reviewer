@@ -6,7 +6,7 @@ package ladder;
 import ladder.domain.Ladder;
 import ladder.view.LadderGameUI;
 
-public class App {
+public class LadderGameMain {
     public static void main(String[] args) {
         int width = LadderGameUI.inputPeopleSize();
         int height = LadderGameUI.inputLadderHigh();
