@@ -1,15 +1,18 @@
 import domain.Ladder;
+import domain.LadderMachine;
+import domain.RandomPointGenerator;
 import view.InputView;
 import view.ResultView;
 
 public class Application {
 
     public static void main(String[] args) {
-        int playerCount = InputView.readPlayerCount();
+        int countOfPlayer = InputView.readPlayers();
         int ladderHeight = InputView.readLadderHeight();
 
-        Ladder ladder = Ladder.create(playerCount, ladderHeight);
+        LadderMachine ladderMachine = LadderMachine.create(countOfPlayer, ladderHeight);
+        Ladder ladder = ladderMachine.draw(new RandomPointGenerator());
 
-        ResultView.printLines(ladder.getLines());
+        ResultView.printLines(ladder);
     }
 }

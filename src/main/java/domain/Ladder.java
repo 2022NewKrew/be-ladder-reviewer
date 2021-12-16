@@ -1,31 +1,31 @@
 package domain;
 
-import java.util.Objects;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toList;
 
 public class Ladder {
 
-    private final Lines lines;
+    private static final int MIN_COUNT = 1;
 
-    private Ladder(Integer count, Integer height) {
-        if (count == null || height == null) {
-            throw new IllegalArgumentException();
-        }
+    private final List<Line> lines;
 
-        lines = Stream.generate(() -> Line.create(count, new RandomPointGenerator()))
-                .limit(height)
-                .collect(collectingAndThen(toList(), Lines::create));
+    private Ladder(List<Line> lines) {
+        this.lines = Optional.ofNullable(lines)
+                .filter(this::isValidCount)
+                .map(Collections::unmodifiableList)
+                .orElseThrow(IllegalArgumentException::new);
     }
 
-    public static Ladder create(Integer count, Integer height) {
-        return new Ladder(count, height);
+    private boolean isValidCount(List<Line> lines) {
+        return MIN_COUNT <= lines.size();
     }
 
-    public Lines getLines() {
+    public static Ladder create(List<Line> lines) {
+        return new Ladder(lines);
+    }
+
+    public List<Line> getLines() {
         return lines;
     }
 }
