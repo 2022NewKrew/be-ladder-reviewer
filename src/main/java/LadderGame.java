@@ -45,10 +45,17 @@ public class LadderGame {
     }
 
     private String getNextStick(String previousStick) {
-        if (HORIZONTAL_STICK.equals(previousStick) || new Random().nextInt() % 2 == 0) {
+        if (HORIZONTAL_STICK.equals(previousStick)) {
+            return EMPTY_STICK;
+        }
+        if (isEvenNumber(new Random().nextInt())) {
             return EMPTY_STICK;
         }
         return HORIZONTAL_STICK;
+    }
+
+    private boolean isEvenNumber(int number) {
+        return number % 2 == 0;
     }
 
     private void printNewLine() {
