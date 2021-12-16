@@ -28,13 +28,16 @@ public class Ladder {
     private void printRow(List<Boolean> rungs) {
         for (Boolean rung : rungs) {
             System.out.print("|");
-            if (Boolean.TRUE.equals(rung)) {
-                System.out.print("-");
-            } else {
-                System.out.print(" ");
-            }
+            System.out.print(getRungString(rung));
         }
         System.out.println("|");
+    }
+
+    private String getRungString(Boolean rung) {
+        if (Boolean.TRUE.equals(rung)) {
+            return "-";
+        }
+        return " ";
     }
 
     private List<Boolean> createRungs(int userNumber) {

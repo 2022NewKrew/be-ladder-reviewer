@@ -2,8 +2,9 @@
 
 자바 웹 백엔드 1주차 사다리 게임
 
-## 1단계 구현
-* [link](https://lucas.codesquad.kr/2022-kakao/course/%EB%B0%B1%EC%97%94%EB%93%9C-%EB%A6%AC%EB%B7%B0%EC%96%B4-%EA%B5%90%EC%9C%A1/%EC%82%AC%EB%8B%A4%EB%A6%AC-%EA%B2%8C%EC%9E%84/ladder-game-step-1)
+## 구현
+* [1단계](https://lucas.codesquad.kr/2022-kakao/course/%EB%B0%B1%EC%97%94%EB%93%9C-%EB%A6%AC%EB%B7%B0%EC%96%B4-%EA%B5%90%EC%9C%A1/%EC%82%AC%EB%8B%A4%EB%A6%AC-%EA%B2%8C%EC%9E%84/ladder-game-step-1)
+* [2단계](https://lucas.codesquad.kr/2022-kakao/course/%EB%B0%B1%EC%97%94%EB%93%9C-%EB%A6%AC%EB%B7%B0%EC%96%B4-%EA%B5%90%EC%9C%A1/%EC%82%AC%EB%8B%A4%EB%A6%AC-%EA%B2%8C%EC%9E%84/ladder-game-step-2)
 
 ### 기능 요구사항
 * 간단한 사다리 게임을 구현한다.
@@ -15,6 +16,11 @@
 ### 프로그래밍 요구사항
 * 메소드의 크기가 최대 10라인을 넘지 않도록 구현한다.
   * method가 한 가지 일만 하도록 최대한 작게 만들자.
+* index(인덴트, 들여쓰기) depth를 2단계에서 1단계로 줄여라.
+  * depth의 경우 if문을 사용하는 경우 1단계의 depth가 증가한다. if문 안에 while문을 사용한다면 depth가 2단계가 된다.
+* else를 사용하지 마라.
+* 구현 순서를 고려해 프로그래밍한다.
+* naming convention을 지키면서 프로그래밍한다.
 
 ### 실행 결과
 * 위 요구사항에 따라 3명의 사람을 위한 5개 높이 사다리를 만들 경우, 프로그램을 실행한 결과는 다음과 같다.
