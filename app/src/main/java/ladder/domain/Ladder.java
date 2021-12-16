@@ -1,41 +1,31 @@
 package ladder.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Ladder {
 
-    private final int height;
+    private final List<LadderLine> lines;
     private final int width;
-    private final List<List<Boolean>> lines;
 
     public Ladder(int height, int width) {
-        this.height = height;
+        validationCheck(height, width);
         this.width = width;
-        this.lines = makeLines(height, width);
-    }
-
-    private List<List<Boolean>> makeLines(int height, int width) {
-        return IntStream
+        lines = IntStream
                 .range(0, height)
-                .mapToObj(i -> makeLine(width))
+                .mapToObj(j -> new LadderLine(width))
                 .collect(Collectors.toList());
     }
 
-    private List<Boolean> makeLine(int width) {
-        Random random = new Random();
-        return IntStream
-                .range(0, width-1)
-                .mapToObj(j -> random.nextBoolean())
-                .collect(Collectors.toList());
+    private void validationCheck(int height, int width) {
+        if (height < 1 || width < 1) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getHeight() {
-        return height;
+        return lines.size();
     }
 
     public int getWidth() {
@@ -44,10 +34,9 @@ public class Ladder {
 
     @Override
     public String toString() {
-        return lines.stream().map(line ->
-                "|" + line.stream()
-                    .map(b -> b ? "-" : " ")
-                    .collect(Collectors.joining("|")) + "|")
+        return lines.stream()
+                .map(LadderLine::toString)
                 .collect(Collectors.joining("\n"));
     }
+  
 }
