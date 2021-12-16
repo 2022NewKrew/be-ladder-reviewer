@@ -2,6 +2,9 @@ package com.kakao.commerce;
 
 import java.util.Scanner;
 
+import com.kakao.commerce.domain.Ladder;
+import com.kakao.commerce.maker.LadderMaker;
+
 public class LadderGame {
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.kakao.commerce;
+package com.kakao.commerce.domain;
 
 import java.util.List;
 
