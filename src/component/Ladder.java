@@ -1,3 +1,5 @@
+package component;
+
 public class Ladder {
     private final int row;
     private final int col;
@@ -26,22 +28,31 @@ public class Ladder {
         return isRange(r, c) && leftOk && rightOk;
     }
 
-    public void createLineByRandom() {
-        for (int r = 0; r < row; r++) {
-            for (int c = 0; c < col; c++) {
-                if (isValid(r, c) && Math.random() < 0.5) {
-                    ladderArr[r][c] = true;
-                }
-            }
+    public void createAllLineByRandom() {
+        int numLines = (int) (Math.random() * (row * col * 2));
+        for (int i = 0; i < numLines; i++) {
+            int r = (int) (Math.random() * row);
+            int c = (int) (Math.random() * col);
+            createLine(r, c);
+        }
+    }
+
+    public void createLine(int r, int c) {
+        if (isValid(r, c)) {
+            ladderArr[r][c] = true;
+        }
+    }
+
+    public void printRow(int r) {
+        for (int j = 0; j < col; j++) {
+            System.out.print(ladderArr[r][j] ? "-|" : " |");
         }
     }
 
     public void printLadder() {
         for (int i = 0; i < row; i++) {
             System.out.print("|");
-            for (int j = 0; j < col; j++) {
-                System.out.print(ladderArr[i][j] ? "-|" : " |");
-            }
+            printRow(i);
             System.out.println();
         }
     }

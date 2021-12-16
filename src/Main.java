@@ -1,3 +1,5 @@
+import component.Ladder;
+
 import java.util.Scanner;
 
 public class Main {
@@ -18,7 +20,7 @@ public class Main {
         int row = getHeightFromConsole();
 
         Ladder ladder = new Ladder(row, col);
-        ladder.createLineByRandom();
+        ladder.createAllLineByRandom();
         ladder.printLadder();
     }
 }
