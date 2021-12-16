@@ -16,6 +16,14 @@ public class LadderTest {
     }
 
     @Test
+    void validHeightTest() {
+        assertThatThrownBy(() -> new Ladder(0, 5))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Ladder(-1, 5))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void widthTest() {
         Ladder ladder1 = new Ladder(3, 5);
         Ladder ladder2 = new Ladder(4, 7);
@@ -23,6 +31,14 @@ public class LadderTest {
         assertThat(ladder1.getWidth()).isEqualTo(5);
         assertThat(ladder2.getWidth()).isEqualTo(7);
         assertThat(ladder3.getWidth()).isEqualTo(4);
+    }
+
+    @Test
+    void validWidthTest() {
+        assertThatThrownBy(() -> new Ladder(5, -1))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Ladder(5, 0))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
