@@ -1,26 +1,28 @@
 package com.kakao.domain;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public final class LadderFactory {
 
     private LadderFactory() {}
 
     public static Ladder create(HeadCount headCount, Height height) {
-        List<LadderCross> ladderCrosses = createLadderCrosses(headCount, height);
-        return new Ladder(headCount, height, new LadderCrosses(ladderCrosses));
+        List<LadderRow> ladder = createLadder(headCount, height);
+        return new Ladder(ladder);
     }
 
-    private static List<LadderCross> createLadderCrosses(HeadCount headCount, Height height) {
+    private static List<LadderRow> createLadder(HeadCount headCount, Height height) {
         return IntStream.range(0, height.getValue())
-                        .mapToObj(idx -> createLadderCross(headCount))
+                        .mapToObj(idx -> createLadderRow(headCount))
                         .collect(Collectors.toList());
     }
 
-    private static LadderCross createLadderCross(HeadCount headCount) {
-        int left = RandomGenerator.create(0, headCount.getValue() - 1);
-        return LadderCross.of(left);
+    private static LadderRow createLadderRow(HeadCount headCount) {
+        int rowSize = headCount.getValue() - 1;
+        return new LadderRow(RowGenerator.generate(rowSize));
     }
 }

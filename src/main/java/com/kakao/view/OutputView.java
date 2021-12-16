@@ -1,5 +1,7 @@
 package com.kakao.view;
 
+import java.util.List;
+
 import com.kakao.view.dto.LadderDto;
 
 public final class OutputView {
@@ -7,21 +9,25 @@ public final class OutputView {
     private OutputView() {}
 
     public static void printLadder(LadderDto ladder) {
-        for (int i = 0; i < ladder.getHeight(); i++) {
-            printOneLine(ladder.getHeadCount(), ladder.getLadderIndex().get(i));
+        List<List<Boolean>> isCross = ladder.getIsCross();
+        int height = isCross.size();
+        for (int i = 0; i < height; i++) {
+            printOneLine(isCross.get(i));
         }
     }
 
-    private static void printOneLine(int headCount, int ladderIndex) {
-        for (int i = 0; i < headCount; i++) {
+    private static void printOneLine(List<Boolean> isCross) {
+        int crossSize = isCross.size();
+        System.out.print("| ");
+        for (int i = 0; i < crossSize; i++) {
+            printLadderCross(isCross.get(i));
             System.out.print("| ");
-            printLadderCross(ladderIndex, i);
         }
         System.out.println();
     }
 
-    private static void printLadderCross(int ladderIndex, int i) {
-        if (ladderIndex == i) {
+    private static void printLadderCross(boolean isCross) {
+        if (isCross) {
             System.out.print("- ");
         } else {
             System.out.print("  ");
