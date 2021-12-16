@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/be-ladder-reviewer.iml" filepath="$PROJECT_DIR$/.idea/be-ladder-reviewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ladder/ladder.iml" filepath="$PROJECT_DIR$/ladder/ladder.iml" />
+    </modules>
+  </component>
+</project>
