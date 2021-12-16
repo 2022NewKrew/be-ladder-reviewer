@@ -7,6 +7,11 @@ import java.util.stream.Collectors;
 
 class LadderGameCliImpl implements LadderGame {
 
+    public static final String LADDER_EXISTS = "-";
+    public static final String LADDER_NONE = " ";
+    public static final String LADDER_VERTICAL = "|";
+    public static final String LINE_SEPARATOR = "\n";
+
     @Override
     public LadderGameParams inputGameParams(InputStream inputStream) {
         Scanner sc = new Scanner(inputStream);
@@ -26,8 +31,8 @@ class LadderGameCliImpl implements LadderGame {
 
         return Arrays.stream(ladderMap)
                 .map(ladders -> Arrays.stream(ladders)
-                        .map(it -> it == Ladder.EXISTS ? "-" : " ")
-                        .collect(Collectors.joining("|", "|", "|")))
-                .collect(Collectors.joining("\n"));
+                        .map(it -> it == Ladder.EXISTS ? LADDER_EXISTS : LADDER_NONE)
+                        .collect(Collectors.joining(LADDER_VERTICAL, LADDER_VERTICAL, LADDER_VERTICAL)))
+                .collect(Collectors.joining(LINE_SEPARATOR));
     }
 }
