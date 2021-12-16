@@ -9,8 +9,8 @@ public class LadderInput {
         this.ladderHeight = ladderHeight;
     }
 
-    public int getPeopleCount() {
-        return peopleCount;
+    public int getFootboardAreaCount() {
+        return peopleCount - 1;
     }
 
     public int getLadderHeight() {
