@@ -23,19 +23,23 @@ public class LadderGame {
 
     private void printLadders() {
         for (int i = 0; i < this.heightOfLadder; i++) {
-            for (int j = 0; j < this.participants; j++) {
-                printMessage("|");
-                if (j == this.participants - 1) {
-                    break;
-                }
-                if (new Random().nextInt() % 2 == 0) {
-                    printMessage(" ");
-                } else {
-                    printMessage("-");
-                }
-            }
-            printMessage("\n");
+            printFloors();
         }
+    }
+
+    private void printFloors() {
+        for (int i = 0; i < this.participants; i++) {
+            printMessage("|");
+            if (i == this.participants - 1) {
+                break;
+            }
+            if (new Random().nextInt() % 2 == 0) {
+                printMessage(" ");
+            } else {
+                printMessage("-");
+            }
+        }
+        printMessage("\n");
     }
 
     private void printMessage(String message) {
