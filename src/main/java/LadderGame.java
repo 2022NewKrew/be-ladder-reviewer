@@ -28,15 +28,18 @@ public class LadderGame {
     }
 
     private void printFloors() {
+        String previousLadder = null;
         for (int i = 0; i < this.participants; i++) {
             printMessage("|");
             if (i == this.participants - 1) {
                 break;
             }
-            if (new Random().nextInt() % 2 == 0) {
+            if (new Random().nextInt() % 2 == 0 || "-".equals(previousLadder)) {
                 printMessage(" ");
+                previousLadder = " ";
             } else {
                 printMessage("-");
+                previousLadder = "-";
             }
         }
         printMessage("\n");
