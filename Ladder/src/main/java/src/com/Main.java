@@ -16,10 +16,7 @@ public class Main {
     }
 
     public static int insertData(String type){
-        String coment = INSERT_USER_COMMENT;
-        if("L".equals(type)){
-            coment = INSERT_LADDER_COMMENT;
-        }
+        String coment = "P".equals(type) ? INSERT_USER_COMMENT : INSERT_LADDER_COMMENT;
         System.out.println(coment);
         return Integer.parseInt(sc.nextLine());
     }
