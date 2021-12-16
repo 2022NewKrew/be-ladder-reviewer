@@ -38,4 +38,5 @@ public class Ladder {
                 .map(LadderLine::toString)
                 .collect(Collectors.joining("\n"));
     }
+  
 }
