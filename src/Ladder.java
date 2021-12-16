@@ -5,7 +5,7 @@ class Ladder {
 
     public Ladder(int row, int col) {
         this.row = row;
-        this.col = col;
+        this.col = col - 1;
         if (row < 0 || col < 0) {
             throw new IllegalArgumentException("row and col must be positive");
         }
