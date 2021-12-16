@@ -6,12 +6,11 @@ import java.util.stream.IntStream;
 
 public class Ladder {
 
-    private final int height;
-    private final int width;
     private final List<LadderLine> lines;
+    private final int width;
 
     public Ladder(int height, int width) {
-        this.height = height;
+        validationCheck(height, width);
         this.width = width;
         lines = IntStream
                 .range(0, height)
@@ -19,8 +18,14 @@ public class Ladder {
                 .collect(Collectors.toList());
     }
 
+    private void validationCheck(int height, int width) {
+        if (height < 1 || width < 1) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public int getHeight() {
-        return height;
+        return lines.size();
     }
 
     public int getWidth() {
