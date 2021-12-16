@@ -3,6 +3,10 @@ import java.util.Scanner;
 
 public class LadderGame {
 
+    private static final String HORIZONTAL_STICK = "-";
+    private static final String VERTICAL_STICK = "|";
+    private static final String EMPTY_STICK = " ";
+
     private int participants;
     private int heightOfLadder;
 
@@ -28,21 +32,26 @@ public class LadderGame {
     }
 
     private void printFloors() {
-        String previousLadder = null;
+        String previousStick = null;
         for (int i = 0; i < this.participants; i++) {
-            printMessage("|");
-            if (i == this.participants - 1) {
+            printMessage(VERTICAL_STICK);
+            if (isLastStick(i)) {
                 break;
             }
-            if (new Random().nextInt() % 2 == 0 || "-".equals(previousLadder)) {
-                printMessage(" ");
-                previousLadder = " ";
+            if (HORIZONTAL_STICK.equals(previousStick) || new Random().nextInt() % 2 == 0) {
+                printMessage(EMPTY_STICK);
+                previousStick = EMPTY_STICK;
+
             } else {
-                printMessage("-");
-                previousLadder = "-";
+                printMessage(HORIZONTAL_STICK);
+                previousStick = HORIZONTAL_STICK;
             }
         }
         printMessage("\n");
+    }
+
+    private boolean isLastStick(int i) {
+        return i == this.participants - 1;
     }
 
     private void printMessage(String message) {
