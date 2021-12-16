@@ -14,27 +14,31 @@ public class LadderGame {
     private void readRequiredInputs() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("참여할 사람은 몇 명인가요?");
+        printMessage("참여할 사람은 몇 명인가요?\n");
         this.participants = scanner.nextInt();
 
-        System.out.println("최대 사다리 높이는 몇 개인가요?");
+        printMessage("최대 사다리 높이는 몇 개인가요?\n");
         this.heightOfLadder = scanner.nextInt();
     }
 
     private void printLadders() {
         for (int i = 0; i < this.heightOfLadder; i++) {
             for (int j = 0; j < this.participants; j++) {
-                System.out.print("|");
+                printMessage("|");
                 if (j == this.participants - 1) {
                     break;
                 }
                 if (new Random().nextInt() % 2 == 0) {
-                    System.out.print(" ");
+                    printMessage(" ");
                 } else {
-                    System.out.print("-");
+                    printMessage("-");
                 }
             }
-            System.out.println();
+            printMessage("\n");
         }
+    }
+
+    private void printMessage(String message) {
+        System.out.print(message);
     }
 }
