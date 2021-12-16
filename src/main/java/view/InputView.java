@@ -6,7 +6,7 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int readPlayerCount() {
+    public static int readPlayers() {
         System.out.println("참여할 사람은 몇 명인가요?");
         return Integer.parseInt(scanner.nextLine());
     }

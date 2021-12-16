@@ -1,7 +1,7 @@
 package view;
 
 import domain.Line;
-import domain.Lines;
+import domain.Ladder;
 import domain.Point;
 
 import java.util.Collections;
@@ -12,8 +12,8 @@ public class ResultView {
     private static final String EMPTY_DELIMITER = "";
     private static final String LINE_POINT = "-";
 
-    public static void printLines(Lines lines) {
-        lines.getLines().forEach(ResultView::printLine);
+    public static void printLines(Ladder ladder) {
+        ladder.getLines().forEach(ResultView::printLine);
     }
 
     private static void printLine(Line line) {
