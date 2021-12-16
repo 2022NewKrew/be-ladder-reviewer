@@ -13,7 +13,7 @@ class LadderGameMapGeneratorImpl implements LadderGameMapGenerator {
         this.maxLadderHeight = maxLadderHeight;
         this.numParticipants = numParticipants;
         this.random = new Random() {{
-            setSeed(Instant.now().getEpochSecond());
+            setSeed(Instant.now().toEpochMilli());
         }};
     }
 
