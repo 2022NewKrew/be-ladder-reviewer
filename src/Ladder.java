@@ -1,4 +1,4 @@
-public class Ladder {
+class Ladder {
     private final int row;
     private final int col;
     private final boolean[][] ladderArr;
