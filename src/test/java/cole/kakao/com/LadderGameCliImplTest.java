@@ -7,7 +7,7 @@ import java.io.ByteArrayInputStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-class LadderGameTest {
+class LadderGameCliImplTest {
 
     @Test
     void testInputNumParticipants_whenNumParticipants3_then3() {
@@ -40,5 +40,4 @@ class LadderGameTest {
         // then
         assertEquals(3, actual.maxLadderHeight);
     }
-
 }

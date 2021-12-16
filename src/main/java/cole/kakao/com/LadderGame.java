@@ -6,7 +6,7 @@ interface LadderGame {
 
     LadderGameParams inputGameParams(InputStream inputStream);
 
-    String generateMap(LadderGameParams params);
+    String show(LadderGameParams params);
 
     class LadderGameParams {
 

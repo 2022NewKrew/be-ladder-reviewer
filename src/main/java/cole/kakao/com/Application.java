@@ -6,6 +6,6 @@ public class Application {
         LadderGame ladderGame = new LadderGameCliImpl();
         LadderGame.LadderGameParams params = ladderGame.inputGameParams(System.in);
 
-        System.out.println(ladderGame.generateMap(params));
+        System.out.println(ladderGame.show(params));
     }
 }

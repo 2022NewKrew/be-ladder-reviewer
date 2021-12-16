@@ -1,7 +1,9 @@
 package cole.kakao.com;
 
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 class LadderGameCliImpl implements LadderGame {
 
@@ -18,8 +20,14 @@ class LadderGameCliImpl implements LadderGame {
     }
 
     @Override
-    public String generateMap(LadderGameParams params) {
-        LadderGameMapGenerator mapGenerator = new LadderGameMapGeneratorImpl(params.numParticipants, params.maxLadderHeight);
-        return mapGenerator.generate();
+    public String show(LadderGameParams params) {
+        LadderGameMap ladderGameMap = new LadderGameMapImpl(params.numParticipants, params.maxLadderHeight);
+        Ladder[][] ladderMap = ladderGameMap.getLadderMap();
+
+        return Arrays.stream(ladderMap)
+                .map(ladders -> Arrays.stream(ladders)
+                        .map(it -> it == Ladder.EXISTS ? "-" : " ")
+                        .collect(Collectors.joining("|", "|", "|")))
+                .collect(Collectors.joining("\n"));
     }
 }
