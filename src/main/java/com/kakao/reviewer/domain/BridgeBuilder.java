@@ -2,10 +2,10 @@ package com.kakao.reviewer.domain;
 
 import java.util.Random;
 
-public class BridgeChecker {
+public class BridgeBuilder {
     private final Random random;
 
-    public BridgeChecker() {
+    public BridgeBuilder() {
         this.random = new Random();
     }
 
