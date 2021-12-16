@@ -1,7 +1,10 @@
-package com.kakao.commerce;
+package com.kakao.commerce.maker;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.kakao.commerce.domain.Ladder;
+import com.kakao.commerce.domain.Line;
 
 public class LadderMaker {
 
@@ -14,6 +17,6 @@ public class LadderMaker {
             lines.add(lineMaker.makeLine(peopleCount));
         }
 
-        return new Ladder(peopleCount, height, lines);
+        return new Ladder(lines);
     }
 }

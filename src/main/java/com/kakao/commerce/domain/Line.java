@@ -1,8 +1,8 @@
-package com.kakao.commerce;
+package com.kakao.commerce.domain;
 
 import java.util.List;
 
-public class Line {
+public class Line implements Drawable {
 
     private final List<String> blocks;
 
@@ -10,7 +10,8 @@ public class Line {
         this.blocks = blocks;
     }
 
-    public void drawLine() {
+    @Override
+    public void draw() {
         for (String block : blocks) {
             System.out.print(block);
         }
