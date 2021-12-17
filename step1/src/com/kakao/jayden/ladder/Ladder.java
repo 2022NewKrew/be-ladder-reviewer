@@ -26,12 +26,17 @@ public class Ladder {
         for (int i = 1 ; i <= width ; i ++) {
             System.out.print("|");
 
-            if (i != rand || i == width) {
-                System.out.print(" ");
-            } else {
-                System.out.print("-");
-            }
+            printColumn(i, rand);
         }
+    }
+
+    private void printColumn(int index, int rand) {
+        if (index != rand || index == width) {
+            System.out.print(" ");
+            return;
+        }
+
+        System.out.print("-");
     }
 
     public static void main(String[] args) {
