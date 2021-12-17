@@ -26,7 +26,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.kakaocorp.ladder.game.LadderGame")
+    mainClass.set("com.kakaocorp.ladder.game.LadderApp")
 }
 
 tasks.named<Test>("test") {
