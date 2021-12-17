@@ -15,14 +15,13 @@ public class LadderRow {
         this.crosses = Collections.unmodifiableList(crosses);
     }
 
-    private static boolean isConsecutiveTrueExist(List<Boolean> l) {
-        if (l.isEmpty() || l.size() == 1) {
-            return false;
+    private static boolean isConsecutiveTrueExist(List<Boolean> crosses) {
+        for (int i = 1; i < crosses.size(); i++) {
+            if (crosses.get(i - 1) && crosses.get(i)) {
+                return true;
+            }
         }
-        if (l.get(0) && l.get(1)) {
-            return true;
-        }
-        return isConsecutiveTrueExist(l.subList(1, l.size()));
+        return false;
     }
 
     public int size() {
