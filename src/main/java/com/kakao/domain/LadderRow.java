@@ -1,5 +1,7 @@
 package com.kakao.domain;
 
+import static com.kakao.util.Std.*;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -8,15 +10,9 @@ public class LadderRow {
     private final List<Boolean> crosses;
 
     public LadderRow(List<Boolean> crosses) {
-        validateNoConsecutiveCross(crosses);
+        require(!isConsecutiveTrueExist(crosses), "연속으로 cross가 존재할 수 없습니다.");
 
         this.crosses = Collections.unmodifiableList(crosses);
-    }
-
-    private static void validateNoConsecutiveCross(List<Boolean> crosses) {
-        if (isConsecutiveTrueExist(crosses)) {
-            throw new IllegalArgumentException();
-        }
     }
 
     private static boolean isConsecutiveTrueExist(List<Boolean> l) {
