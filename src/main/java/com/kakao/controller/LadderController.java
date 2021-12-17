@@ -18,6 +18,6 @@ public final class LadderController {
 
         Ladder ladder = LadderFactory.create(headCount, height);
 
-        OutputView.printLadder(LadderDto.of(ladder));
+        OutputView.printLadder(LadderDto.from(ladder));
     }
 }

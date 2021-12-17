@@ -1,8 +1,9 @@
 package com.kakao.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public final class RowGenerator {
 
@@ -11,13 +12,10 @@ public final class RowGenerator {
     private RowGenerator() {}
 
     public static List<Boolean> generate(int size) {
-        List<Boolean> result = new ArrayList<>(size + 1);
-        result.add(false);
-        for (int i = 0; i < size; i++) {
-            boolean prev = result.get(result.size() - 1);
-            result.add(nextOne(prev));
-        }
-        return result.subList(1, result.size());
+        return Stream.iterate(false, RowGenerator::nextOne)
+                       .skip(1)
+                       .limit(size)
+                       .collect(Collectors.toList());
     }
 
     private static boolean nextOne(boolean prev) {

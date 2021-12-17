@@ -29,8 +29,8 @@ public final class OutputView {
     private static void printLadderCross(boolean isCross) {
         if (isCross) {
             System.out.print("- ");
-        } else {
-            System.out.print("  ");
+            return;
         }
+        System.out.print("  ");
     }
 }

@@ -1,13 +1,13 @@
 package com.kakao.domain;
 
+import static com.kakao.util.Std.*;
+
 public class HeadCount {
 
     private final int value;
 
     public HeadCount(int value) {
-        if (value < 2) {
-            throw new IllegalArgumentException();
-        }
+        require(value >= 2, "인원수는 둘 이상이어야 합니다.");
 
         this.value = value;
     }

@@ -11,7 +11,7 @@ public class LadderDto {
 
     private final List<List<Boolean>> isCross;
 
-    public static LadderDto of(Ladder ladder) {
+    public static LadderDto from(Ladder ladder) {
         List<List<Boolean>> isCross = ladder.getLadder()
               .stream()
               .map(LadderRow::getCrosses)
