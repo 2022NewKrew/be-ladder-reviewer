@@ -11,14 +11,21 @@ class Ladder {
 
     void print() {
         boolean[] ladderArray = createRandomArray(height * legCount);
-
         for (int i = 0; i < ladderArray.length; ++i) {
-            if (i % legCount == 0) {
-                System.out.print("\n|");
-            }
-            String leg = ladderArray[i] ? "-|" : " |";
-            System.out.print(leg);
+            printNewRow(i);
+            printLeg(ladderArray[i]);
         }
+    }
+
+    private void printNewRow(int index) {
+        if (index % legCount == 0) {
+            System.out.print("\n|");
+        }
+    }
+
+    private void printLeg(boolean isLegExist) {
+        String leg = isLegExist ? "-|" : " |";
+        System.out.println(leg);
     }
 
     private boolean[] createRandomArray(int length) {
@@ -32,5 +39,4 @@ class Ladder {
     private boolean getRandomBoolean() {
         return Math.random() < 0.5;
     }
-
 }
