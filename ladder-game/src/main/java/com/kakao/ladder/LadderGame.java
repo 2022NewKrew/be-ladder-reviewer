@@ -18,31 +18,50 @@ public class LadderGame {
         StringBuilder sb = new StringBuilder();
 
         for (int row=0; row<ladderHeight; row++) {
-            for (int col=0; col<userCount; col++) {
-                sb.append(hasRightLink[row][col] ? connectedLadder : notConnectedLadder);
-            }
-            sb.append('\n');
+            sb.append(getLadderString(row));
         }
 
         System.out.print(sb);
+    }
+
+    private String getLadderString(int row) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int col=0; col<userCount; col++) {
+            sb.append(hasRightLink[row][col] ? connectedLadder : notConnectedLadder);
+        }
+
+        sb.append('\n');
+
+        return sb.toString();
     }
 
     private boolean[][] makeLadderLink() {
         boolean[][] hasRightLink = new boolean[ladderHeight][userCount];
 
         for (int row=0; row<ladderHeight; row++) {
-            for (int col=0; col<userCount-1; col++) {
-                if (doseNotHaveLeftLink(hasRightLink, row, col) && successRandomly()) {
-                    hasRightLink[row][col] = true;
-                }
-            }
+            hasRightLink[row] = makeRightLink();
         }
 
         return hasRightLink;
     }
 
-    private boolean doseNotHaveLeftLink(boolean[][] hasRightLink, int row, int col) {
-        return (col == 0 || !hasRightLink[row][col-1]);
+    private boolean[] makeRightLink() {
+        boolean[] hasRightLink = new boolean[userCount];
+
+        for (int col=0; col<userCount-1; col++) {
+            hasRightLink[col] = makeLinkRandomly(hasRightLink, col);
+        }
+
+        return hasRightLink;
+    }
+
+    private boolean makeLinkRandomly(boolean[] hasRightLink, int col) {
+        return doseNotHaveLeftLink(hasRightLink, col) && successRandomly();
+    }
+
+    private boolean doseNotHaveLeftLink(boolean[] hasRightLink, int col) {
+        return (col == 0 || !hasRightLink[col-1]);
     }
 
     private boolean successRandomly() {
