@@ -49,16 +49,25 @@ public class LadderGame {
   // 사다리의 라인 구성
   private List<Boolean> makeLadderLine(int userCnt) {
     List<Boolean> line = new ArrayList<>();
-    boolean prevHorizenFlag = false;
 
+    boolean horizonFlag = false;
     for (int i = 0; i < userCnt; i++) {
-      boolean nowHorizenFlag = i != userCnt - 1 && !prevHorizenFlag && random.nextBoolean();
-      line.add(nowHorizenFlag);
-      prevHorizenFlag = nowHorizenFlag;
+      horizonFlag = isHorizonFlag(i, userCnt, horizonFlag);
+      line.add(horizonFlag);
     }
 
     return line;
   }
+
+  // horizon Flag 여부 결정
+  private Boolean isHorizonFlag(int i, int userCnt, boolean nowHorizenFlag) {
+    // 마지막 라인이거나 이전 flag 가 이미 horizen 이면 horizen 이 아니어야한다.
+    if (i == userCnt -1 || nowHorizenFlag){
+      return false;
+    }
+    return random.nextBoolean();
+  }
+
 
   // 사다리 출력
   private void printLadder(List<List<Boolean>> ladder) {
