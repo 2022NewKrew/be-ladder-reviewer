@@ -52,7 +52,8 @@ public class LadderGame {
 
     boolean horizonFlag = false;
     for (int i = 0; i < userCnt; i++) {
-      horizonFlag = line.add(isHorizonFlag(i, userCnt, horizonFlag));
+      horizonFlag = isHorizonFlag(i, userCnt, horizonFlag);
+      line.add(horizonFlag);
     }
 
     return line;
