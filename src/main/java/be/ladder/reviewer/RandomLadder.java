@@ -9,7 +9,7 @@ public class RandomLadder {
         this.random = random;
     }
 
-    public Ladder build(int height, int numOfParticipants) {
+    public Ladder build(int numOfParticipants, int height) {
         List<LadderEntry> entries = new ArrayList<>();
         for (int i = 0; i < height; i++) {
             entries.add(buildEntry(numOfParticipants));

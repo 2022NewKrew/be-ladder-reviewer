@@ -23,7 +23,7 @@ public class LadderGame {
         int numOfParticipants = inputNumOfParticipants.value();
         int height = inputLadderHeight.value();
 
-        Ladder ladder = randomLadder.build(height, numOfParticipants);
+        Ladder ladder = randomLadder.build(numOfParticipants, height);
 
         printLadder.print(ladder);
     }
