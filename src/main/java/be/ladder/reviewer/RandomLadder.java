@@ -22,6 +22,6 @@ public class RandomLadder {
         for (int i = 0; i < numOfParticipants - 1; i++) {
             lines.add(random.nextBoolean());
         }
-        return new LadderEntry(numOfParticipants, Collections.unmodifiableList(lines));
+        return new LadderEntry(Collections.unmodifiableList(lines));
     }
 }
