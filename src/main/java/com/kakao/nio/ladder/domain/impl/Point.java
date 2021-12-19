@@ -1,12 +1,14 @@
 package com.kakao.nio.ladder.domain.impl;
 
-
 import com.kakao.nio.ladder.domain.LadderItem;
-import com.kakao.nio.ladder.domain.SupportedLadderItems;
 
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 사다리 게임에서 길찾기를 할때 이동하는 단위입니다.
+ * LadderLevel 에 포함된 Point 는 순번(index) 를 가지고 방향성(왼쪽, 오른쪽) 을 가집니다
+ */
 public class Point implements SupportedLadderItems {
 
     private final int index;

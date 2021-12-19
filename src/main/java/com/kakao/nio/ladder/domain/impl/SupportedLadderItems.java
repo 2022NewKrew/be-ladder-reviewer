@@ -1,4 +1,6 @@
-package com.kakao.nio.ladder.domain;
+package com.kakao.nio.ladder.domain.impl;
+
+import com.kakao.nio.ladder.domain.LadderItem;
 
 import java.util.List;
 

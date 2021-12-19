@@ -2,46 +2,33 @@ package com.kakao.nio.ladder.domain.impl;
 
 
 import com.kakao.nio.ladder.domain.LadderItem;
-import com.kakao.nio.ladder.domain.SupportedLadderItems;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LadderLine implements SupportedLadderItems {
+/**
+ * 사다리 한 층을 구성합니다
+ *
+ * n 개의 point 가 LadderLevel 을 구성합니다.
+ * n 은 사다리게임에 참여하는 멤버수 입니다.
+ */
+public class LadderLevel implements SupportedLadderItems {
 
     private List<Point> points;
 
-    public LadderLine(List<Point> points) {
+    public LadderLevel(List<Point> points) {
         this.points = points;
     }
 
-    public static LadderLine init(int numOfMembers) {
-        List<Point> points = new ArrayList<>();
-        Point first = initFirst(points);
-        Point current = initBody(numOfMembers, points, first);
-        initLast(points, current);
-        return new LadderLine(points);
-    }
-
-    private static Point initBody(int numOfMembers, List<Point> points, Point first) {
-        Point current = first;
-        for (int i = 1; i < numOfMembers - 1; i++) {
-            Point next = current.next();
-            points.add(next);
-            current = next;
+    public static LadderLevel init(int numOfMembers) {
+        Builder builder = LadderLevel.builder()
+                .first(DirectionGenerator.generate());
+        for(int i = 1; i < numOfMembers - 1; i++){
+            builder.next();
         }
-        return current;
-    }
-
-    private static void initLast(List<Point> points, Point current) {
-        points.add(current.last());
-    }
-
-    private static Point initFirst(List<Point> points) {
-        Point first = Point.first(DirectionGenerator.generate());
-        points.add(first);
-        return first;
+        builder.last();
+        return builder.build();
     }
 
     @Override
@@ -88,13 +75,19 @@ class Builder {
         return this;
     }
 
+    public Builder next(){
+        current = current.next();
+        points.add(current);
+        return this;
+    }
+
     public Builder last() {
         points.add(current.last());
         return this;
     }
 
-    public LadderLine build() {
-        return new LadderLine(points);
+    public LadderLevel build() {
+        return new LadderLevel(points);
     }
 
 }
