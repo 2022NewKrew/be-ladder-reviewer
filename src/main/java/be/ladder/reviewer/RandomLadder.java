@@ -9,17 +9,17 @@ public class RandomLadder {
         this.random = random;
     }
 
-    public Ladder build(int numOfParticipants, int height) {
+    public Ladder build(NumOfParticipants numOfParticipants, Height height) {
         List<LadderEntry> entries = new ArrayList<>();
-        for (int i = 0; i < height; i++) {
+        for (int i = 0; i < height.value(); i++) {
             entries.add(buildEntry(numOfParticipants));
         }
         return new Ladder(Collections.unmodifiableList(entries));
     }
 
-    private LadderEntry buildEntry(int numOfParticipants) {
+    private LadderEntry buildEntry(NumOfParticipants numOfParticipants) {
         List<Boolean> lines = new ArrayList<>();
-        for (int i = 0; i < numOfParticipants - 1; i++) {
+        for (int i = 0; i < numOfParticipants.numOfLinesInLadderEntry(); i++) {
             lines.add(random.nextBoolean());
         }
         return new LadderEntry(Collections.unmodifiableList(lines));
