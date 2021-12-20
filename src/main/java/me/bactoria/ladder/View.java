@@ -31,17 +31,19 @@ class ConsoleView implements View {
 
 	@Override
 	public void outputLadder(List<List<Boolean>> ladder) {
-		for (int i = 0; i < ladder.size(); i++) {
-			System.out.print(HEIGHT_LINE);
-			for (int j = 0; j < ladder.get(i).size(); j++) {
-				System.out.print(widthLine(ladder.get(i).get(j)));
-				System.out.print(HEIGHT_LINE);
-			}
-			System.out.println();
-		}
+		ladder.forEach(this::outputLadderRow);
 	}
 
-	private String widthLine(Boolean hasLine) {
+	private void outputLadderRow(List<Boolean> ladderRow) {
+		System.out.print(HEIGHT_LINE);
+		for (boolean hasLine : ladderRow) {
+			System.out.print(parseWidthLine(hasLine));
+			System.out.print(HEIGHT_LINE);
+		}
+		System.out.println();
+	}
+
+	private String parseWidthLine(Boolean hasLine) {
 		return hasLine ? WIDTH_LINE_EXIST : WIDTH_LINE_EMPTY;
 	}
 
