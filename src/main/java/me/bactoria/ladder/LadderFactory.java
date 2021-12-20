@@ -1,6 +1,5 @@
 package me.bactoria.ladder;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -19,15 +18,8 @@ public class LadderFactory {
 	}
 
 	private static List<Boolean> makeRandomWidthLines(int peopleCount) {
-		List<Boolean> result = new ArrayList<>();
-		for (int i = 0; i < peopleCount - 1; i++) {
-			if (i > 0 && result.get(i - 1)) {
-				result.add(false);
-				continue;
-			}
-			boolean hasLine = Math.random() > 0.5;
-			result.add(hasLine);
-		}
-		return result;
+		return IntStream.range(1, peopleCount)
+				.mapToObj(i -> Math.random() > 0.5)
+				.collect(Collectors.toList());
 	}
 }
